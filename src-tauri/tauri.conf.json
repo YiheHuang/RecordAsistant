@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "RecordAssistant",
+  "version": "0.1.0",
+  "identifier": "com.yihe.recordassistant",
+  "build": {
+    "beforeBuildCommand": "npm run desktop:build",
+    "beforeDevCommand": "npm run desktop:build",
+    "frontendDist": "../desktop-dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "RecordAssistant",
+        "width": 1360,
+        "height": 860,
+        "minWidth": 880,
+        "minHeight": 620,
+        "center": true,
+        "backgroundColor": "#f6f7f9"
+      }
+    ],
+    "security": { "csp": null }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "category": "Productivity",
+    "shortDescription": "项目、关系与事件的本地记录助手",
+    "longDescription": "RecordAssistant 是用于管理项目进程、人物关系和重要事件的本地优先记录工具。",
+    "icon": ["icons/icon.ico"],
+    "windows": {
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "installMode": "currentUser",
+        "displayLanguageSelector": false
+      },
+      "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true }
+    }
+  }
+}
