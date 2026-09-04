@@ -1,6 +1,6 @@
 [package]
 name = "record-assistant"
-version = "0.1.0"
+version = "0.1.1"
 description = "项目、关系与事件的本地记录助手"
 authors = ["Yihe Huang"]
 edition = "2021"
@@ -23,3 +23,4 @@ codegen-units = 1
 lto = true
 opt-level = "z"
 strip = true
+

@@ -94,7 +94,6 @@ input[type="checkbox"],input[type="radio"]{background:#fff!important;border-colo
 .node-drag-label{display:grid;place-items:center;gap:1px;min-width:82px;padding:1px 5px 3px;border-radius:6px;cursor:grab;text-align:center}
 .node-drag-label:hover{background:rgba(237,243,248,.85)}.node-drag-label:active{cursor:grabbing}
 .node-drag-label strong{max-width:112px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.node-drag-label small{color:var(--sub);font-size:10px}
-.relationship-edge-label{pointer-events:none}.relationship-edge-label rect{fill:#fff;stroke:#dce3ea;stroke-width:1}.relationship-edge-label text{fill:#607083;font-size:11px;font-weight:600}
 .react-flow__edge-path{stroke-linecap:round;stroke-linejoin:round;transition:stroke-width 150ms ease,opacity 150ms ease}.react-flow__edge:hover .react-flow__edge-path{opacity:.76}.react-flow__edge{cursor:pointer}
 .react-flow__connection-path{stroke:#52799d!important;stroke-width:2!important;stroke-linecap:round;stroke-dasharray:5 4}
 .react-flow__node{background:transparent!important}.react-flow__node.selected .person-node-avatar{box-shadow:0 0 0 3px rgba(82,119,157,.2),0 2px 8px rgba(43,64,85,.14)}
