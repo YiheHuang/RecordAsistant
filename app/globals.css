@@ -100,3 +100,13 @@ input[type="checkbox"],input[type="radio"]{background:#fff!important;border-colo
 @media(max-width:700px){.graph-hint{top:auto;right:12px;bottom:12px}.graph-legend{max-width:calc(100% - 24px);flex-wrap:wrap}}
 .category-组织{color:#8d6a24;background:#fff5dc}.category-工作{color:#4d7298;background:#edf4fa}
 .empty:empty{display:none}.empty-card{min-height:120px}
+
+/* v0.2 — reduced chrome and quiet interaction states */
+.topbar{display:block}.topbar h1{margin:0}
+.project-main small{color:var(--sub);font-size:12px}.project-description{margin:0 0 13px;color:#596675;font-size:14px;line-height:1.65}
+.graph-legend{gap:8px;padding:5px 8px;border-color:#e5e9ed;box-shadow:none;font-size:10px}.graph-legend i{width:13px;height:2px}
+.react-flow__node{transition:opacity 150ms ease}.react-flow__node.graph-dimmed{opacity:.18}.react-flow__edge{transition:opacity 150ms ease}
+.settings-grid{max-width:880px}.settings-panel{min-height:180px}.settings-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}.backup-actions{display:flex;gap:9px}.file-button{position:relative;cursor:pointer}.file-button input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.undo-toast{border-color:#d9e1e8;background:#fff;color:var(--ink)}.undo-toast button{margin-left:8px;padding:3px 6px;border:0;border-radius:5px;background:transparent;color:#426f9e;font-weight:650}.undo-toast button:hover{background:#edf3f8}
+.dialog-card>.form-grid{max-height:calc(88vh - 67px)}
+@media(max-width:620px){.settings-fields{grid-template-columns:1fr}.settings-panel{min-height:0}.backup-actions>*{flex:1}.graph-hint{font-size:11px}}

@@ -12,6 +12,8 @@ RecordAssistant 是一个本地优先的个人记录工作台，用来把**项�
 - 本地 IndexedDB 存储，支持完整 JSON 导入与导出。
 - 极简浅色界面，支持 Windows 桌面端与现代浏览器。
 
+![RecordAssistant 关系图谱](docs/images/relationships.png)
+
 Windows 用户可从 [Releases](https://github.com/YiheHuang/RecordAsistant/releases) 下载安装包。具体操作见[用户使用手册](docs/USER_GUIDE.zh-CN.md)。
 
 ### 本地开发
