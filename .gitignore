@@ -41,6 +41,7 @@ next-env.d.ts
 /release/
 /.chrome-test*/
 /.chrome-readme/
+/.chrome-*/
 /ui-*.png
 *.tsbuildinfo
 
