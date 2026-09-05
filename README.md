@@ -7,12 +7,10 @@ RecordAssistant 是一个本地优先的个人记录工作台，用来把**项�
 ## 功能
 
 - 项目、里程碑与任务管理，自动计算加权进度并提示近期节点。
-- 人物档案与关系图谱，支持四维关系评分、拖动连线和一键自动排版。
+- 人物档案与关系图谱，支持四维关系评分、拖动连线和清晰的分层自动排版。
 - 统一事件时间线，可关联项目、人物与关系记录。
 - 本地 IndexedDB 存储，支持完整 JSON 导入与导出。
 - 极简浅色界面，支持 Windows 桌面端与现代浏览器。
-
-![RecordAssistant 关系图谱](docs/images/relationships.png)
 
 Windows 用户可从 [Releases](https://github.com/YiheHuang/RecordAsistant/releases) 下载安装包。具体操作见[用户使用手册](docs/USER_GUIDE.zh-CN.md)。
 
