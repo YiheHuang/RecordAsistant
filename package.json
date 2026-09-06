@@ -1,7 +1,7 @@
 {
   "name": "record-assistant",
   "productName": "RecordAssistant",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "项目、关系与事件的本地记录助手",
   "author": "Yihe Huang",
   "private": true,

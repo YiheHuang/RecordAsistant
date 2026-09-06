@@ -10,11 +10,13 @@ RecordAssistant 是一个本地优先的个人记录工作台，用来把**项�
 - 人物档案与关系图谱，支持四维关系评分、拖动连线和清晰的分层自动排版。
 - 统一事件时间线，可关联项目、人物与关系记录。
 - 本地 IndexedDB 存储，支持完整 JSON 导入与导出。
-- 极简浅色界面，支持 Windows 桌面端与现代浏览器。
+- 极简浅色界面与克制的状态动效，支持 Windows 桌面端与现代浏览器。
 
 ![RecordAssistant 关系图谱](docs/images/relationships.png)
 
 Windows 用户可从 [Releases](https://github.com/YiheHuang/RecordAsistant/releases) 下载安装包。具体操作见[用户使用手册](docs/USER_GUIDE.zh-CN.md)。
+
+当前版本为 **v0.3.0**：进一步统一桌面界面、修复表单布局，并为任务、进度、项目折叠和关系图谱加入轻量反馈动效。
 
 ### 本地开发
 
@@ -31,6 +33,6 @@ npm run app:build    # 构建 Windows 桌面应用
 
 ## English
 
-RecordAssistant is a local-first workspace for organizing projects, relationships, and important events. It offers weighted progress tracking, an interactive relationship graph with automatic layout, a linked event timeline, and complete JSON backup—without accounts or cloud dependencies.
+RecordAssistant is a local-first workspace for organizing projects, relationships, and important events. It offers weighted progress tracking, an interactive relationship graph with automatic layout, a linked event timeline, complete JSON backup, and restrained motion feedback—without accounts or cloud dependencies.
 
 Download the Windows installer from [Releases](https://github.com/YiheHuang/RecordAsistant/releases). The desktop app uses Tauri 2 and the system WebView2 runtime to remain lightweight.
