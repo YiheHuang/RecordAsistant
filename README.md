@@ -16,7 +16,7 @@ RecordAssistant 是一个本地优先的个人记录工作台，用来把**项�
 
 Windows 用户可从 [Releases](https://github.com/YiheHuang/RecordAsistant/releases) 下载安装包。具体操作见[用户使用手册](docs/USER_GUIDE.zh-CN.md)。
 
-当前版本为 **v0.3.0**：进一步统一桌面界面、修复表单布局，并为任务、进度、项目折叠和关系图谱加入轻量反馈动效。
+当前版本为 **v0.3.1**：修正项目状态空集筛选，并为项目与任务加入小时级时间安排。
 
 ### 本地开发
 
