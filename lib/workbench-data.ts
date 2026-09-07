@@ -13,24 +13,29 @@ class WorkbenchDB extends Dexie {
 export const db = new WorkbenchDB();
 export const uid = (prefix: string) => `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 const iso = (offset = 0) => { const d = new Date(); d.setDate(d.getDate() + offset); const local=new Date(d.getTime()-d.getTimezoneOffset()*60000); return local.toISOString().slice(0, 10); };
-export const normalizeData=(data:WorkbenchData):WorkbenchData=>({...data,events:data.events.map(event=>({...event,category:event.category==='实验室'?'工作':event.category==='学校'?'组织':event.category}))});
+const isoTime = (offset=0,hour=0,minute=0) => { const d=new Date(); d.setDate(d.getDate()+offset); d.setHours(hour,minute,0,0); const local=new Date(d.getTime()-d.getTimezoneOffset()*60000); return local.toISOString().slice(0,16); };
+const withTime=(value:string|undefined,time:string)=>!value?'':value.includes('T')?value:`${value}T${time}`;
+export const normalizeData=(data:WorkbenchData):WorkbenchData=>({...data,
+  projects:data.projects.map(project=>({...project,startDate:withTime(project.startDate,'00:00'),endDate:withTime(project.endDate,'23:59')})),
+  tasks:data.tasks.map(task=>{const legacy=task as Task&{startDate?:string};const dueDate=task.dueDate||'';return{...task,startDate:withTime(legacy.startDate||dueDate.slice(0,10),'00:00'),dueDate:withTime(dueDate,'23:59')}}),
+  events:data.events.map(event=>({...event,category:event.category==='实验室'?'工作':event.category==='学校'?'组织':event.category}))});
 
 export function sampleData(): WorkbenchData {
   const me='person-me',lead='person-lead',partner='person-partner',client='person-client';
   const p1='project-product',p2='project-event',m1='milestone-prototype',m2='milestone-plan';
   return {
     projects:[
-      {id:p1,name:'产品迭代',description:'整理反馈并完成下一版本的核心改进。',status:'进行中',priority:'高',startDate:iso(-30),endDate:iso(45),tags:['产品','重点'],notes:'每周回顾一次进度。'},
-      {id:p2,name:'年度活动',description:'协调场地、内容与参与人员。',status:'规划中',priority:'中',startDate:iso(-7),endDate:iso(75),tags:['活动'],notes:''},
+      {id:p1,name:'产品迭代',description:'整理反馈并完成下一版本的核心改进。',status:'进行中',priority:'高',startDate:isoTime(-30,9),endDate:isoTime(45,18),tags:['产品','重点'],notes:'每周回顾一次进度。'},
+      {id:p2,name:'年度活动',description:'协调场地、内容与参与人员。',status:'规划中',priority:'中',startDate:isoTime(-7,10),endDate:isoTime(75,17),tags:['活动'],notes:''},
     ],
     milestones:[
       {id:m1,projectId:p1,name:'完成可用原型',targetDate:iso(5),status:'进行中'},
       {id:m2,projectId:p2,name:'确认执行方案',targetDate:iso(9),status:'未开始'},
     ],
     tasks:[
-      {id:'task-1',milestoneId:m1,projectId:p1,title:'整理用户反馈',dueDate:iso(0),completed:false,weight:2,priority:'高',notes:''},
-      {id:'task-2',milestoneId:m1,projectId:p1,title:'确认交互细节',dueDate:iso(2),completed:true,weight:1,priority:'中',notes:''},
-      {id:'task-3',milestoneId:m2,projectId:p2,title:'准备活动预算',dueDate:iso(6),completed:false,weight:1,priority:'中',notes:''},
+      {id:'task-1',milestoneId:m1,projectId:p1,title:'整理用户反馈',startDate:isoTime(0,9),dueDate:isoTime(0,23,59),completed:false,weight:2,priority:'高',notes:''},
+      {id:'task-2',milestoneId:m1,projectId:p1,title:'确认交互细节',startDate:isoTime(1,10),dueDate:isoTime(2,18),completed:true,weight:1,priority:'中',notes:''},
+      {id:'task-3',milestoneId:m2,projectId:p2,title:'准备活动预算',startDate:isoTime(5,9),dueDate:isoTime(6,17),completed:false,weight:1,priority:'中',notes:''},
     ],
     persons:[
       {id:me,name:'Alex',role:'负责人',organization:'项目组',contact:'',tags:['我'],notes:'关系图谱的中心人物',importantDate:'',isSelf:true},

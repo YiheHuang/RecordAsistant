@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { makeBackup, sampleData, validateBackup } from './workbench-data';
-import { milestoneProgress, projectProgress, stripLinksForDeleted } from './workbench-utils';
+import { makeBackup, normalizeData, sampleData, validateBackup } from './workbench-data';
+import { milestoneProgress, nextMidnightAfter, nextWholeHour, projectProgress, stripLinksForDeleted } from './workbench-utils';
+import type { WorkbenchData } from './workbench-types';
 
 describe('项目进度计算', () => {
   it('按照任务权重汇总项目与里程碑进度', () => {
@@ -9,6 +10,28 @@ describe('项目进度计算', () => {
     expect(milestoneProgress('milestone-prototype',data.tasks)).toBe(33);
   });
   it('没有任务时返回零进度',()=>expect(projectProgress('missing',[])).toBe(0));
+});
+
+describe('小时级时间',()=>{
+  it('默认从下一个整点开始，并在其后的午夜截止',()=>{
+    const start=nextWholeHour(new Date(2026,8,7,10,23));
+    expect(start).toBe('2026-09-07T11:00');
+    expect(nextMidnightAfter(start)).toBe('2026-09-08T00:00');
+  });
+  it('临近午夜时将截止时间顺延到开始时间之后的午夜',()=>{
+    const start=nextWholeHour(new Date(2026,8,7,23,30));
+    expect(start).toBe('2026-09-08T00:00');
+    expect(nextMidnightAfter(start)).toBe('2026-09-09T00:00');
+  });
+  it('为旧版日期数据补充时间并保留原截止日期语义',()=>{
+    const data=sampleData();
+    const legacy={...data,projects:data.projects.map((p,i)=>i? p:{...p,startDate:'2026-09-01',endDate:'2026-09-30'}),tasks:data.tasks.map((t,i)=>i?t:({...t,startDate:undefined,dueDate:'2026-09-07'}))} as unknown as WorkbenchData;
+    const normalized=normalizeData(legacy);
+    expect(normalized.projects[0].startDate).toBe('2026-09-01T00:00');
+    expect(normalized.projects[0].endDate).toBe('2026-09-30T23:59');
+    expect(normalized.tasks[0].startDate).toBe('2026-09-07T00:00');
+    expect(normalized.tasks[0].dueDate).toBe('2026-09-07T23:59');
+  });
 });
 
 describe('删除关联对象',()=>{

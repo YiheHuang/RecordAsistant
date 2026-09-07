@@ -8,7 +8,7 @@ export interface Project {
   startDate: string; endDate: string; tags: string[]; notes: string;
 }
 export interface Milestone { id: string; projectId: string; name: string; targetDate: string; status: '未开始' | '进行中' | '已完成'; }
-export interface Task { id: string; milestoneId: string; projectId: string; title: string; dueDate: string; completed: boolean; weight: number; priority: Priority; notes: string; }
+export interface Task { id: string; milestoneId: string; projectId: string; title: string; startDate: string; dueDate: string; completed: boolean; weight: number; priority: Priority; notes: string; }
 export interface Person { id: string; name: string; role: string; organization: string; contact: string; tags: string[]; notes: string; importantDate: string; isSelf: boolean; }
 export interface ScoreSet { trust: number; collaboration: number; familiarity: number; influence: number; }
 export interface RelationshipEvent { id: string; date: string; type: string; description: string; projectId?: string; before: ScoreSet; after: ScoreSet; }
